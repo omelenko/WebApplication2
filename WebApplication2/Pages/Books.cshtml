@@ -1,0 +1,57 @@
+﻿@page "{searchString?}"
+@model WebApplication2.Pages.BooksModel
+@{
+	ViewData["Title"] = "Books";
+}
+<h1>Книги</h1>
+<p>
+	<a asp-page="Add">Додати новий</a>
+	|
+	<a asp-page="./Delete">Видалити за назвою</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => new Book().Name)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => new Book().Author)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => new Book().Style)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => new Book().Publisher)
+			</th>
+			<td>
+				@Html.DisplayNameFor(model => new Book().Year)
+			</td>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	@foreach(Book a in Program.Books)
+	{
+	<tr>
+		<td>
+			@a.Name
+		</td>
+		<td>
+			@a.Author
+		</td>
+		<td>
+			@a.Year
+		</td>
+		<td>
+			@a.Publisher
+		</td>
+		<td>
+			@a.Style
+		</td>
+		<td>
+					<a asp-page="./Edit" asp-route-id="@a">Редагувати</a>
+		</td>
+	</tr>
+	}
+</table>
